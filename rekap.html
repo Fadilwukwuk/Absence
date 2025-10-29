@@ -1,0 +1,105 @@
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rekap Absensi</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #ececec;
+      margin: 0;
+      padding: 40px;
+      color: #333;
+    }
+    h1 {
+      text-align: center;
+      color: #444;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 30px;
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    th, td {
+      padding: 12px 15px;
+      text-align: center;
+      border-bottom: 1px solid #ddd;
+    }
+    th {
+      background: #555;
+      color: white;
+    }
+    tr:hover {
+      background: #f2f2f2;
+    }
+    .status-hadir {
+      color: green;
+      font-weight: bold;
+    }
+    .status-terlambat {
+      color: red;
+      font-weight: bold;
+    }
+    button {
+      margin-top: 20px;
+      background-color: #666;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    button:hover {
+      background-color: #444;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Rekap Absensi Siswa</h1>
+  <table id="rekapTable">
+    <thead>
+      <tr>
+        <th>Nama Lengkap</th>
+        <th>Kelas</th>
+        <th>Waktu Absen</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <button onclick="window.location.href='index.html'">Kembali</button>
+
+  <script>
+    const data = JSON.parse(localStorage.getItem("absensi")) || [];
+    const tbody = document.querySelector("#rekapTable tbody");
+
+    if (data.length === 0) {
+      const row = tbody.insertRow();
+      const cell = row.insertCell();
+      cell.colSpan = 4;
+      cell.textContent = "Belum ada data absensi.";
+      cell.style.textAlign = "center";
+    } else {
+      data.forEach(item => {
+        const row = tbody.insertRow();
+        row.insertCell().textContent = item.nama;
+        row.insertCell().textContent = item.kelas;
+        row.insertCell().textContent = item.waktu;
+        const statusCell = row.insertCell();
+        statusCell.textContent = item.status;
+        statusCell.className = item.status === "Hadir" ? "status-hadir" : "status-terlambat";
+      });
+    }
+  </script>
+
+</body>
+</html>
