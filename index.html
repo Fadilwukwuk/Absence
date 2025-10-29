@@ -1,0 +1,112 @@
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Absensi Sekolah</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f4f4f4;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    .container {
+      background: white;
+      padding: 30px 40px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      width: 350px;
+      text-align: center;
+    }
+    h1 {
+      margin-bottom: 20px;
+      color: #444;
+    }
+    input, select, button {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 15px;
+    }
+    button {
+      background-color: #555;
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    button:hover {
+      background-color: #333;
+    }
+    .view-btn {
+      background-color: #888;
+      margin-top: 10px;
+    }
+    .view-btn:hover {
+      background-color: #666;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Absensi Sekolah</h1>
+    <input type="text" id="nama" placeholder="Nama Lengkap" required>
+
+    <select id="kelas" required>
+      <option value="">Pilih Kelas</option>
+      <optgroup label="Kelas X">
+        <option>X-A</option><option>X-B</option><option>X-C</option>
+        <option>X-D</option><option>X-E</option><option>X-F</option>
+        <option>X-G</option><option>X-H</option><option>X-I</option>
+        <option>X-J</option><option>X-K</option>
+      </optgroup>
+      <optgroup label="Kelas IX">
+        <option>IX-A</option><option>IX-B</option><option>IX-C</option>
+        <option>IX-D</option><option>IX-E</option><option>IX-F</option>
+        <option>IX-G</option><option>IX-H</option><option>IX-I</option>
+        <option>IX-J</option><option>IX-K</option>
+      </optgroup>
+    </select>
+
+    <button onclick="submitAbsen()">Submit</button>
+    <button class="view-btn" onclick="location.href='rekap.html'">View Absence</button>
+  </div>
+
+  <script>
+    function submitAbsen() {
+      const nama = document.getElementById("nama").value.trim();
+      const kelas = document.getElementById("kelas").value;
+      const waktu = new Date();
+      const jam = waktu.getHours();
+      const menit = waktu.getMinutes();
+      const waktuStr = waktu.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+
+      if (!nama || !kelas) {
+        alert("Silakan isi nama dan pilih kelas terlebih dahulu!");
+        return;
+      }
+
+      const status = (jam > 7 || (jam === 7 && menit > 15)) ? "Terlambat" : "Hadir";
+
+      // Simpan data ke localStorage
+      const data = JSON.parse(localStorage.getItem("absensi")) || [];
+      data.push({ nama, kelas, waktu: waktuStr, status });
+      localStorage.setItem("absensi", JSON.stringify(data));
+
+      alert(`Absensi berhasil disimpan!\nStatus: ${status}`);
+      document.getElementById("nama").value = "";
+      document.getElementById("kelas").value = "";
+    }
+  </script>
+
+</body>
+</html>
