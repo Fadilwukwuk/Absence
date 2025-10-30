@@ -200,7 +200,6 @@
 
     <div class="content active" id="roster">
       <h2>Jadwal Pelajaran</h2>
-
       <div class="day-box">
         <h3>Senin</h3>
         <ul>
@@ -210,7 +209,6 @@
           <li>Bahasa Indonesia (13.50 - 15.50)</li>
         </ul>
       </div>
-
       <div class="day-box">
         <h3>Selasa</h3>
         <ul>
@@ -220,7 +218,6 @@
           <li>Bahasa Arab (14.00 - 15.30)</li>
         </ul>
       </div>
-
       <div class="day-box">
         <h3>Rabu</h3>
         <ul>
@@ -231,7 +228,6 @@
           <li>Biologi (14.00 - 15.30)</li>
         </ul>
       </div>
-
       <div class="day-box">
         <h3>Kamis</h3>
         <ul>
@@ -242,7 +238,6 @@
           <li>Ekonomi (14.00 - 15.30)</li>
         </ul>
       </div>
-
       <div class="day-box">
         <h3>Jum’at</h3>
         <ul>
@@ -256,12 +251,74 @@
     </div>
 
     <div class="content" id="piket">
-      <h2>Jadwal Piket</h2>
-      <p>Senin: Aisyah & Putra</p>
-      <p>Selasa: Ridho & Dinda</p>
-      <p>Rabu: Ishaq & Rara</p>
-      <p>Kamis: Fajar & Salsa</p>
-      <p>Jum’at: Bagas & Nia</p>
+      <h2>Jadwal Piket Mingguan</h2>
+
+      <div class="day-box">
+        <h3>Senin</h3>
+        <ul>
+          <li>Haura Khansa Putri Satriady</li>
+          <li>Achmad Dzaka Buhairil Ma'Arif</li>
+          <li>Adam Athar Gobel</li>
+          <li>Aleeza Fatin Rifaya</li>
+          <li>Amal Khalifah Ilahi</li>
+          <li>Andhika Aushaf Aryasatya</li>
+          <li>Keeva Elmira Kuswandi</li>
+        </ul>
+      </div>
+
+      <div class="day-box">
+        <h3>Selasa</h3>
+        <ul>
+          <li>Andi Dira Mahirah J.</li>
+          <li>Andi Eryna Fairuz Indrawan</li>
+          <li>Andi Fadhil Ramadhan</li>
+          <li>Ayrin Neyla Rifani</li>
+          <li>Bazlah Izzah Azimah</li>
+          <li>Dhafina Anindita Fadhli</li>
+          <li>Zchrysilla Kasih Jagadditha</li>
+        </ul>
+      </div>
+
+      <div class="day-box">
+        <h3>Rabu</h3>
+        <ul>
+          <li>Gilang Syauki Ramadhan</li>
+          <li>Humayra Parma</li>
+          <li>Inayah Putri Ridwan</li>
+          <li>Setyaningsih Widyastuti Surahman</li>
+          <li>Muh. Ishaq Romadhan</li>
+          <li>Muhammad Arrizky Assyarif</li>
+          <li>Syarifah Adilah Putri.R</li>
+          <li>Zakyna Ghinayah</li>
+        </ul>
+      </div>
+
+      <div class="day-box">
+        <h3>Kamis</h3>
+        <ul>
+          <li>Muhammad Harun Ar Rasyid</li>
+          <li>Muhammad Ilham Alfakhri</li>
+          <li>Muhammad Naufal Hakim</li>
+          <li>Muhammad Rizky Fitrawan</li>
+          <li>Muthaharrah</li>
+          <li>Nahdah Ardhani Putri</li>
+          <li>Karina Anindita Perwira</li>
+        </ul>
+      </div>
+
+      <div class="day-box">
+        <h3>Jumat</h3>
+        <ul>
+          <li>Najwa Khairina Salihah</li>
+          <li>Qeiz Ahmad Fayyadh Ghaisan</li>
+          <li>Sakinah Sahra Syam</li>
+          <li>Naifah Taqiyyah Assan</li>
+          <li>Tika Asih Purwanti</li>
+          <li>Farras Ayulia Roem</li>
+          <li>Andi Bilqis Riwifharzana Muallim</li>
+          <li>Muhammad Raihan Anwari</li>
+        </ul>
+      </div>
     </div>
 
     <div class="content" id="tugas">
@@ -285,7 +342,7 @@
 
   <script>
     const akunList = {
-      "israq": { // username
+      "israq": {
         password: "1234",
         nama: "Muh. Ishaq Romadhan",
         kelas: "X.C",
@@ -307,7 +364,6 @@
           document.getElementById("loginPage").style.display = "none";
           document.getElementById("mainPage").style.display = "block";
 
-          // tampilkan biodata sesuai akun
           document.getElementById("bioNama").textContent = akun.nama;
           document.getElementById("bioKelas").textContent = akun.kelas;
           document.getElementById("bioTanggal").textContent = akun.tanggal;
@@ -318,7 +374,6 @@
       }
     }
 
-    // === MENU TOGGLE ===
     const menu = document.getElementById('menu');
     const menuToggle = document.getElementById('menuToggle');
     const profileBtn = document.getElementById('profileBtn');
