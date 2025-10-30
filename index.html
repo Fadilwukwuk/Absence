@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Absensi Sekolah</title>
+  <title>Login - Absensi Sekolah</title>
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
@@ -63,6 +63,13 @@
       text-decoration: none;
       font-weight: 500;
       transition: 0.3s;
+      pointer-events: none; /* default: terkunci */
+      opacity: 0.5;
+    }
+
+    .menu a.active {
+      pointer-events: auto;
+      opacity: 1;
     }
 
     .menu a:hover {
@@ -85,7 +92,7 @@
       color: #444;
     }
 
-    input, select, button {
+    input, button {
       width: 100%;
       padding: 10px;
       margin: 8px 0;
@@ -106,16 +113,11 @@
       background-color: #333;
     }
 
-    .view-btn {
-      background-color: #888;
+    .logout-btn {
+      background-color: #c0392b;
       margin-top: 10px;
     }
 
-    .view-btn:hover {
-      background-color: #666;
-    }
-
-    /* Notifikasi sederhana */
     #notif {
       display: none;
       background: #4CAF50;
@@ -150,14 +152,23 @@
       <span>Smart Class</span>
     </div>
     <div class="menu">
-      <a href="#">Tugas</a>
-      <a href="#">Roster</a>
-      <a href="#">Jadwal Piket</a>
+      <a href="#" id="menu-tugas">Tugas</a>
+      <a href="#" id="menu-roster">Roster</a>
+      <a href="#" id="menu-piket">Jadwal Piket</a>
     </div>
   </div>
 
+  <!-- FORM LOGIN -->
+  <div class="container" id="login-section">
+    <h1>Login Akun</h1>
+    <input type="text" id="username" placeholder="Nama Pengguna" required>
+    <input type="password" id="password" placeholder="Kata Sandi" required>
+    <button onclick="login()">Login</button>
+    <div id="notif">Login berhasil!</div>
+  </div>
+
   <!-- FORM ABSENSI -->
-  <div class="container">
+  <div class="container" id="absen-section" style="display:none;">
     <h1>Absensi Sekolah</h1>
     <input type="text" id="nama" placeholder="Nama Lengkap" required>
 
@@ -179,19 +190,57 @@
 
     <button onclick="submitAbsen()">Submit</button>
     <button class="view-btn" onclick="location.href='rekap.html'">View Absence</button>
+    <button class="logout-btn" onclick="logout()">Logout</button>
 
-    <div id="notif">Absensi berhasil disimpan!</div>
+    <div id="notif-absen">Absensi berhasil disimpan!</div>
   </div>
 
   <script>
-    // Reset data absensi setiap hari baru
-    const today = new Date().toLocaleDateString();
-    const savedDate = localStorage.getItem("tanggalHariIni");
-    if (savedDate !== today) {
-      localStorage.setItem("absensi", JSON.stringify([]));
-      localStorage.setItem("tanggalHariIni", today);
+    // === CEK LOGIN STATUS ===
+    const loggedIn = localStorage.getItem("isLoggedIn") === "true";
+    const loginSection = document.getElementById("login-section");
+    const absenSection = document.getElementById("absen-section");
+    const menuLinks = document.querySelectorAll(".menu a");
+
+    if (loggedIn) {
+      loginSection.style.display = "none";
+      absenSection.style.display = "block";
+      menuLinks.forEach(link => link.classList.add("active"));
     }
 
+    // === LOGIN ===
+    function login() {
+      const username = document.getElementById("username").value.trim();
+      const password = document.getElementById("password").value.trim();
+
+      // contoh login sederhana (bisa diganti dari database nanti)
+      if (username === "admin" && password === "1234") {
+        localStorage.setItem("isLoggedIn", "true");
+        document.getElementById("notif").textContent = "Login berhasil!";
+        document.getElementById("notif").style.display = "block";
+
+        setTimeout(() => {
+          loginSection.style.display = "none";
+          absenSection.style.display = "block";
+          menuLinks.forEach(link => link.classList.add("active"));
+          document.getElementById("notif").style.display = "none";
+        }, 1500);
+      } else {
+        alert("Nama pengguna atau kata sandi salah!");
+      }
+    }
+
+    // === LOGOUT ===
+    function logout() {
+      localStorage.removeItem("isLoggedIn");
+      absenSection.style.display = "none";
+      loginSection.style.display = "block";
+      menuLinks.forEach(link => link.classList.remove("active"));
+      document.getElementById("username").value = "";
+      document.getElementById("password").value = "";
+    }
+
+    // === ABSENSI ===
     function submitAbsen() {
       const nama = document.getElementById("nama").value.trim();
       const kelas = document.getElementById("kelas").value;
@@ -211,8 +260,7 @@
       data.push({ nama, kelas, waktu: waktuStr, status });
       localStorage.setItem("absensi", JSON.stringify(data));
 
-      // Tampilkan notifikasi
-      const notif = document.getElementById("notif");
+      const notif = document.getElementById("notif-absen");
       notif.textContent = `Absensi berhasil disimpan! Status: ${status}`;
       notif.style.display = "block";
       setTimeout(() => notif.style.display = "none", 3000);
