@@ -1,358 +1,253 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>mirxlogy.id - Login</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #111;
-      color: #eee;
-      margin: 0;
-      padding: 0;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mirxlogy.id</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #111;
+    color: white;
+    margin: 0;
+    padding: 0;
+  }
 
-    /* ==== LOGIN PAGE ==== */
-    .login-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      text-align: center;
-    }
-    .login-box {
-      background-color: #1c1c1c;
-      padding: 30px 40px;
-      border-radius: 12px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.6);
-      width: 320px;
-    }
-    .login-box h1 {
-      margin-bottom: 25px;
-      font-size: 22px;
-      color: #fff;
-    }
-    .login-box input {
-      width: 100%;
-      padding: 10px;
-      margin: 10px 0;
-      border: none;
-      border-radius: 6px;
-      background-color: #2c2c2c;
-      color: white;
-      font-size: 15px;
-    }
-    .login-box button {
-      width: 100%;
-      padding: 10px;
-      border: none;
-      border-radius: 6px;
-      background-color: #fff;
-      color: #111;
-      font-size: 16px;
-      cursor: pointer;
-      margin-top: 10px;
-      transition: 0.3s;
-      font-weight: bold;
-    }
-    .login-box button:hover {
-      background-color: #ccc;
-    }
-    .notif {
-      display: none;
-      margin-top: 10px;
-      color: #4CAF50;
-      font-weight: bold;
-    }
+  header {
+    background-color: #222;
+    color: white;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
 
-    /* ==== MAIN PAGE ==== */
-    header {
-      background-color: #1c1c1c;
-      color: white;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px 20px;
-      position: relative;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.5);
-    }
-    header h1 {
-      margin: 0;
-      font-size: 20px;
-      font-weight: bold;
-    }
-    .menu-icon {
-      width: 25px;
-      height: 20px;
-      cursor: pointer;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-    .menu-icon div {
-      width: 100%;
-      height: 3px;
-      background-color: #ccc;
-      border-radius: 3px;
-    }
-    .profile {
-      width: 35px;
-      height: 35px;
-      border-radius: 50%;
-      cursor: pointer;
-    }
-    .menu {
-      position: absolute;
-      top: 60px;
-      right: 20px;
-      background-color: #222;
-      border: 1px solid #444;
-      border-radius: 10px;
-      display: none;
-      flex-direction: column;
-      width: 150px;
-      z-index: 10;
-    }
-    .menu button {
-      background: none;
-      border: none;
-      color: #eee;
-      text-align: left;
-      padding: 10px 15px;
-      cursor: pointer;
-      width: 100%;
-    }
-    .menu button:hover {
-      background-color: #333;
-    }
-    .content {
-      padding: 20px;
-      display: none;
-      animation: fadeIn 0.4s ease;
-    }
-    .active {
-      display: block;
-    }
-    .day-box {
-      background-color: #1f1f1f;
-      border-radius: 10px;
-      padding: 15px;
-      margin-bottom: 15px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.4);
-    }
-    .day-box h3 {
-      margin-top: 0;
-      color: #fff;
-    }
-    ul {
-      padding-left: 20px;
-    }
-    .logout-btn {
-      background-color: #d33;
-      color: white;
-      border: none;
-      padding: 10px 15px;
-      border-radius: 8px;
-      cursor: pointer;
-      margin-top: 20px;
-    }
-    .logout-btn:hover {
-      background-color: #b22;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-  </style>
+  header h1 {
+    margin: 0;
+    font-size: 20px;
+  }
+
+  .menu-button {
+    cursor: pointer;
+    font-size: 25px;
+  }
+
+  .menu {
+    display: none;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    background-color: #333;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .menu a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+  }
+
+  .menu a:hover {
+    background-color: #444;
+  }
+
+  .profile-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+
+  .content {
+    padding: 20px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #222;
+  }
+
+  th, td {
+    border: 1px solid #444;
+    padding: 10px;
+    text-align: left;
+  }
+
+  th {
+    background-color: #333;
+  }
+
+  tr:nth-child(even) {
+    background-color: #1a1a1a;
+  }
+
+  button {
+    background-color: #444;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background-color: #555;
+  }
+
+</style>
 </head>
 <body>
 
-  <!-- === LOGIN PAGE === -->
-  <div class="login-container" id="loginPage">
-    <div class="login-box">
-      <h1>Login ke mirxlogy.id</h1>
-      <input type="text" id="username" placeholder="Nama Pengguna">
-      <input type="password" id="password" placeholder="Kata Sandi">
-      <button onclick="login()">Login</button>
-      <div class="notif" id="notif">Login Berhasil!</div>
-    </div>
+<header>
+  <h1>mirxlogy.id</h1>
+  <img src="profile.png" class="profile-pic" onclick="goToProfile()" alt="Profile">
+  <div class="menu-button" onclick="toggleMenu()">☰</div>
+  <div class="menu" id="menu">
+    <a href="#" onclick="showPage('roster')">Roster</a>
+    <a href="#" onclick="showPage('piket')">Jadwal Piket</a>
+    <a href="#" onclick="showPage('piketTerajin')">Piket Terajin</a>
+    <a href="#" onclick="showPage('tugas')">Tugas</a>
   </div>
+</header>
 
-  <!-- === MAIN PAGE === -->
-  <div id="mainPage" style="display: none;">
-    <header>
-      <h1>mirxlogy.id</h1>
-      <div style="display: flex; align-items: center; gap: 15px;">
-        <div class="menu-icon" id="menuToggle">
-          <div></div><div></div><div></div>
-        </div>
-        <img src="profile.png" alt="Profile" class="profile" id="profileBtn">
-      </div>
+<div id="content" class="content">
+  <h2>Selamat datang di Mirxlogy.id</h2>
+  <p>Pilih menu di atas untuk melihat halaman lainnya.</p>
+</div>
 
-      <div class="menu" id="menu">
-        <button onclick="showPage('roster')">Roster</button>
-        <button onclick="showPage('piket')">Jadwal Piket</button>
-        <button onclick="showPage('tugas')">Tugas</button>
-        <button onclick="showPage('piketTerajin')">Piket Terajin</button>
-      </div>
-    </header>
+<script>
+function toggleMenu() {
+  var menu = document.getElementById("menu");
+  menu.style.display = (menu.style.display === "block") ? "none" : "block";
+}
 
-    <div class="content active" id="roster">
-      <h2>Jadwal Pelajaran</h2>
-      <!-- (Roster tetap seperti sebelumnya) -->
-      <div class="day-box">
-        <h3>Senin</h3>
-        <ul>
-          <li>Penguatan Bahasa (07.45 - 10.00)</li>
-          <li>Sosiologi (10.30 - 12.00)</li>
-          <li>Sejarah Kebudayaan Islam (12.30 - 13.50)</li>
-          <li>Bahasa Indonesia (13.50 - 15.50)</li>
-        </ul>
-      </div>
-      <!-- dst... -->
-    </div>
-
-    <div class="content" id="piket">
-      <h2>Jadwal Piket Mingguan</h2>
-      <p>Lihat daftar lengkap seperti versi sebelumnya...</p>
-    </div>
-
-    <!-- === TUGAS DIEDIT DI SINI === -->
-    <div class="content" id="tugas">
-      <h2>Tugas [Akidah Akhlak]</h2>
-
-      <div class="day-box">
-        <h3>Tugas 1: Membuat Puisi</h3>
-        <ul>
-          <li>Buatlah puisi tentang berbakti kepada orang tua dan guru.</li>
-          <li>Puisi dapat berisi tentang pengorbanan orang tua dan guru, serta rasa syukur dan terima kasih kepada mereka.</li>
-          <li>Beri Barcode.</li>
-        </ul>
-      </div>
-
-      <div class="day-box">
-        <h3>Tugas 2: Membuat Cerita Pendek</h3>
-        <ul>
-          <li>Buatlah cerita pendek tentang anak yang berbakti kepada orang tua dan guru.</li>
-          <li>Cerita dapat berisi pengalaman anak tersebut dalam membantu orang tua dan guru, serta dampak positif dari sikap berbakti tersebut.</li>
-          <li>Anak durhaka yang tobat.</li>
-          <li>Tulis ayat/hadis yang berkaitan dengan orang tua.</li>
-          <li>Beri Barcode.</li>
-        </ul>
-      </div>
-
-      <div class="day-box">
-        <h3>Tugas 3: Membuat Poster</h3>
-        <ul>
-          <li>Buatlah poster tentang pentingnya berbakti kepada orang tua dan guru.</li>
-          <li>Poster dapat berisi ayat Al-Qur'an atau hadits yang terkait dengan berbakti kepada orang tua dan guru.</li>
-          <li>Beri gambar-gambar yang mendukung tema tersebut.</li>
-          <li>Beri Barcode.</li>
-        </ul>
-      </div>
-
-      <div class="day-box">
-        <h3>Tugas 4: Berbakti dalam Aksi</h3>
-        <ul>
-          <li>Lakukan aksi nyata untuk berbakti kepada orang tua dan guru (misalnya membantu pekerjaan rumah, membantu adik belajar, membantu guru).</li>
-          <li>Buat laporan tentang aksi yang dilakukan dan dampaknya bagi orang tua dan guru.</li>
-          <li>Lampirkan foto atau link video.</li>
-          <li>Setiap anggota kelompok harus membuat laporan masing-masing.</li>
-          <li>Beri Barcode.</li>
-        </ul>
-      </div>
-
-      <div class="day-box">
-        <h3>Tugas 5: Membuat Video</h3>
-        <ul>
-          <li>Buatlah video tentang anak yang berbakti kepada orang tua dan guru.</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="content" id="piketTerajin">
+function showPage(page) {
+  let content = document.getElementById("content");
+  if (page === "tugas") {
+    content.innerHTML = `
+      <h2>Tugas Akidah Akhlak</h2>
+      <table>
+        <tr>
+          <th>No</th>
+          <th>Judul Tugas</th>
+          <th>Deskripsi</th>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>Tugas Membuat Puisi</td>
+          <td>
+            Buatlah puisi tentang berbakti kepada orang tua dan guru.<br>
+            Puisi dapat berisi tentang pengorbanan orang tua dan guru, serta rasa syukur dan terima kasih kepada mereka.<br>
+            <b>Beri Barcode</b>
+          </td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Tugas Membuat Cerita Pendek</td>
+          <td>
+            Buatlah cerita pendek tentang anak yang berbakti kepada orang tua dan guru.<br>
+            Cerita dapat berisi pengalaman anak tersebut, serta dampak positif dari sikap berbakti tersebut.<br>
+            Sertakan ayat/hadis tentang orang tua.<br>
+            <b>Beri Barcode</b>
+          </td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Tugas Membuat Poster</td>
+          <td>
+            Buatlah poster tentang pentingnya berbakti kepada orang tua dan guru.<br>
+            Sertakan ayat/hadis dan gambar pendukung.<br>
+            <b>Beri Barcode</b>
+          </td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>Tugas Berbakti dalam Aksi</td>
+          <td>
+            Lakukan aksi nyata membantu orang tua/guru dan buat laporan dampaknya.<br>
+            Lampirkan foto atau video. Setiap anggota membuat laporan sendiri.<br>
+            <b>Beri Barcode</b>
+          </td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>Tugas Membuat Video</td>
+          <td>
+            Buatlah video tentang anak yang berbakti kepada orang tua dan guru.<br>
+            <b>Beri Barcode</b>
+          </td>
+        </tr>
+      </table>
+    `;
+  } else if (page === "piketTerajin") {
+    content.innerHTML = `
       <h2>Piket Terajin</h2>
-      <div class="day-box">
-        <img src="profile.png" alt="Foto" style="width:100px;height:100px;border-radius:50%;display:block;margin:auto;">
-        <h3 style="text-align:center;margin-top:10px;">Muh. Ishaq Romadhan</h3>
-        <p style="text-align:center;"><b>Kelas:</b> X.C</p>
-        <p style="text-align:center;"><b>Tanggal Lahir:</b> 06 September 2010</p>
-        <p style="text-align:center;"><b>Jadwal Piket:</b> Rabu dan Jumat</p>
-        <p style="text-align:center;"><i>Dipilih sebagai siswa paling rajin dalam piket minggu ini.</i></p>
+      <div style="background:#222; padding:20px; border-radius:10px;">
+        <h3>Muh. Ishaq Romadhan</h3>
+        <p>Kelas: X.C</p>
+        <p>Tanggal Lahir: 06 September 2010</p>
       </div>
-    </div>
+    `;
+  } else if (page === "roster") {
+    content.innerHTML = `
+      <h2>Jadwal Pelajaran</h2>
+      <p><b>Senin:</b><br>
+      1. Penguatan Bahasa (07.45 - 10.00)<br>
+      2. Sosiologi (10.30 - 12.00)<br>
+      3. Sejarah Kebudayaan Islam (12.30 - 13.50)<br>
+      4. Bahasa Indonesia (13.50 - 15.50)</p>
 
-    <div class="content" id="biodata">
-      <h2>Biodata</h2>
-      <p><b>Nama:</b> <span id="bioNama"></span></p>
-      <p><b>Kelas:</b> <span id="bioKelas"></span></p>
-      <p><b>Tanggal Lahir:</b> <span id="bioTanggal"></span></p>
-      <p><b>Jadwal Piket:</b> <span id="bioPiket"></span></p>
-      <button class="logout-btn" onclick="logout()">Log Out</button>
-    </div>
-  </div>
+      <p><b>Selasa:</b><br>
+      1. Bahasa Inggris (07.00 - 09.15)<br>
+      2. Penjaskes (09.15 - 12.00)<br>
+      3. Matematika (12.30 - 14.00)<br>
+      4. Bahasa Arab (14.00 - 15.30)</p>
 
-  <script>
-    const akunList = {
-      "israq": {
-        password: "1234",
-        nama: "Muh. Ishaq Romadhan",
-        kelas: "X.C",
-        tanggal: "06 September 2010",
-        piket: "Rabu dan Jumat"
-      }
-    };
+      <p><b>Rabu:</b><br>
+      1. PKn (07.00 - 08.30)<br>
+      2. Matematika (08.30 - 10.00)<br>
+      3. Qur’an Hadist (10.30 - 12.00)<br>
+      4. Kimia (12.30 - 14.00)<br>
+      5. Biologi (14.00 - 15.30)</p>
 
-    function login() {
-      const username = document.getElementById("username").value.trim().toLowerCase();
-      const password = document.getElementById("password").value.trim();
-      const notif = document.getElementById("notif");
+      <p><b>Kamis:</b><br>
+      1. Informatika (07.00 - 08.30)<br>
+      2. Fisika (08.30 - 10.00)<br>
+      3. Mulok (10.30 - 12.00)<br>
+      4. Fiqh (12.30 - 14.00)<br>
+      5. Ekonomi (14.00 - 15.30)</p>
 
-      const akun = akunList[username];
+      <p><b>Jumat:</b><br>
+      1. Bahasa Arab (07.30 - 08.50)<br>
+      2. Seni Budaya (08.50 - 10.10)<br>
+      3. Akidah Akhlak (10.30 - 12.00)<br>
+      4. Sejarah (13.00 - 14.30)<br>
+      5. Geografi (14.30 - 16.00)</p>
+    `;
+  } else {
+    content.innerHTML = `<h2>Halaman belum tersedia.</h2>`;
+  }
 
-      if (akun && akun.password === password) {
-        notif.style.display = "block";
-        setTimeout(() => {
-          document.getElementById("loginPage").style.display = "none";
-          document.getElementById("mainPage").style.display = "block";
-          document.getElementById("bioNama").textContent = akun.nama;
-          document.getElementById("bioKelas").textContent = akun.kelas;
-          document.getElementById("bioTanggal").textContent = akun.tanggal;
-          document.getElementById("bioPiket").textContent = akun.piket;
-        }, 1000);
-      } else {
-        alert("Nama pengguna atau kata sandi salah!");
-      }
-    }
+  document.getElementById("menu").style.display = "none";
+}
 
-    const menu = document.getElementById('menu');
-    const menuToggle = document.getElementById('menuToggle');
-    const profileBtn = document.getElementById('profileBtn');
+function goToProfile() {
+  document.getElementById("content").innerHTML = `
+    <h2>Profil Siswa</h2>
+    <p><b>Nama:</b> Muh. Ishaq Romadhan</p>
+    <p><b>Kelas:</b> X.C</p>
+    <p><b>Tanggal Lahir:</b> 06 September 2010</p>
+    <p><b>Jadwal Piket:</b> Senin & Kamis</p>
+    <button onclick="logout()">Log Out</button>
+  `;
+}
 
-    menuToggle.onclick = () => {
-      menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
-    };
-
-    function showPage(id) {
-      document.querySelectorAll('.content').forEach(c => c.classList.remove('active'));
-      document.getElementById(id).classList.add('active');
-      menu.style.display = 'none';
-    }
-
-    profileBtn.onclick = () => {
-      showPage('biodata');
-    };
-
-    function logout() {
-      alert('Berhasil logout!');
-      document.getElementById("mainPage").style.display = "none";
-      document.getElementById("loginPage").style.display = "flex";
-      document.getElementById("username").value = "";
-      document.getElementById("password").value = "";
-      document.getElementById("notif").style.display = "none";
-    }
-  </script>
+function logout() {
+  window.location.href = "login.html";
+}
+</script>
 </body>
 </html>
