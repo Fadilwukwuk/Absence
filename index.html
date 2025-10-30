@@ -3,15 +3,70 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>mirxlogy.id</title>
+  <title>Login - mirxlogy.id</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', sans-serif;
       background-color: #111;
       color: #eee;
       margin: 0;
       padding: 0;
     }
+
+    /* ==== LOGIN PAGE ==== */
+    .login-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+    }
+    .login-box {
+      background-color: #1c1c1c;
+      padding: 30px 40px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.6);
+      width: 320px;
+    }
+    .login-box h1 {
+      margin-bottom: 25px;
+      font-size: 22px;
+      color: #1abc9c;
+    }
+    .login-box input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 6px;
+      background-color: #2c2c2c;
+      color: white;
+      font-size: 15px;
+    }
+    .login-box button {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 6px;
+      background-color: #1abc9c;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: 0.3s;
+    }
+    .login-box button:hover {
+      background-color: #16a085;
+    }
+    .notif {
+      display: none;
+      margin-top: 10px;
+      color: #4CAF50;
+      font-weight: bold;
+    }
+
+    /* ==== MAIN PAGE ==== */
     header {
       background-color: #1c1c1c;
       color: white;
@@ -112,112 +167,140 @@
   </style>
 </head>
 <body>
-  <header>
-    <h1>mirxlogy.id</h1>
-    <div style="display: flex; align-items: center; gap: 15px;">
-      <div class="menu-icon" id="menuToggle">
-        <div></div><div></div><div></div>
+
+  <!-- === LOGIN PAGE === -->
+  <div class="login-container" id="loginPage">
+    <div class="login-box">
+      <h1>Login ke mirxlogy.id</h1>
+      <input type="text" id="username" placeholder="Nama Pengguna">
+      <input type="password" id="password" placeholder="Kata Sandi">
+      <button onclick="login()">Login</button>
+      <div class="notif" id="notif">Login Berhasil!</div>
+    </div>
+  </div>
+
+  <!-- === MAIN PAGE === -->
+  <div id="mainPage" style="display: none;">
+    <header>
+      <h1>mirxlogy.id</h1>
+      <div style="display: flex; align-items: center; gap: 15px;">
+        <div class="menu-icon" id="menuToggle">
+          <div></div><div></div><div></div>
+        </div>
+        <img src="profile.png" alt="Profile" class="profile" id="profileBtn">
       </div>
-      <img src="profile.png" alt="Profile" class="profile" id="profileBtn">
+
+      <div class="menu" id="menu">
+        <button onclick="showPage('roster')">Roster</button>
+        <button onclick="showPage('piket')">Jadwal Piket</button>
+        <button onclick="showPage('tugas')">Tugas</button>
+      </div>
+    </header>
+
+    <div class="content active" id="roster">
+      <h2>Jadwal Pelajaran</h2>
+
+      <div class="day-box">
+        <h3>Senin</h3>
+        <ul>
+          <li>Penguatan Bahasa (07.45 - 10.00)</li>
+          <li>Sosiologi (10.30 - 12.00)</li>
+          <li>Sejarah Kebudayaan Islam (12.30 - 13.50)</li>
+          <li>Bahasa Indonesia (13.50 - 15.50)</li>
+        </ul>
+      </div>
+
+      <div class="day-box">
+        <h3>Selasa</h3>
+        <ul>
+          <li>Bahasa Inggris (07.00 - 09.15)</li>
+          <li>Penjaskes (09.15 - 12.00)</li>
+          <li>Matematika (12.30 - 14.00)</li>
+          <li>Bahasa Arab (14.00 - 15.30)</li>
+        </ul>
+      </div>
+
+      <div class="day-box">
+        <h3>Rabu</h3>
+        <ul>
+          <li>PKn (07.00 - 08.30)</li>
+          <li>Matematika (08.30 - 10.00)</li>
+          <li>Qur’an Hadist (10.30 - 12.00)</li>
+          <li>Kimia (12.30 - 14.00)</li>
+          <li>Biologi (14.00 - 15.30)</li>
+        </ul>
+      </div>
+
+      <div class="day-box">
+        <h3>Kamis</h3>
+        <ul>
+          <li>Informatika (07.00 - 08.30)</li>
+          <li>Fisika (08.30 - 10.00)</li>
+          <li>Mulok (10.30 - 12.00)</li>
+          <li>Fiqh (12.30 - 14.00)</li>
+          <li>Ekonomi (14.00 - 15.30)</li>
+        </ul>
+      </div>
+
+      <div class="day-box">
+        <h3>Jum’at</h3>
+        <ul>
+          <li>Bahasa Arab (07.30 - 08.50)</li>
+          <li>Seni Budaya (08.50 - 10.10)</li>
+          <li>Akidah Akhlak (10.30 - 12.00)</li>
+          <li>Sejarah (13.00 - 14.30)</li>
+          <li>Geografi (14.30 - 16.00)</li>
+        </ul>
+      </div>
     </div>
 
-    <div class="menu" id="menu">
-      <button onclick="showPage('roster')">Roster</button>
-      <button onclick="showPage('piket')">Jadwal Piket</button>
-      <button onclick="showPage('tugas')">Tugas</button>
+    <div class="content" id="piket">
+      <h2>Jadwal Piket</h2>
+      <p>Senin: Aisyah & Putra</p>
+      <p>Selasa: Ridho & Dinda</p>
+      <p>Rabu: Ishaq & Rara</p>
+      <p>Kamis: Fajar & Salsa</p>
+      <p>Jum’at: Bagas & Nia</p>
     </div>
-  </header>
 
-  <!-- Halaman Roster -->
-  <div class="content active" id="roster">
-    <h2>Jadwal Pelajaran</h2>
-
-    <div class="day-box">
-      <h3>Senin</h3>
+    <div class="content" id="tugas">
+      <h2>Tugas Mingguan</h2>
       <ul>
-        <li>Penguatan Bahasa (07.45 - 10.00)</li>
-        <li>Sosiologi (10.30 - 12.00)</li>
-        <li>Sejarah Kebudayaan Islam (12.30 - 13.50)</li>
-        <li>Bahasa Indonesia (13.50 - 15.50)</li>
+        <li>Bahasa Indonesia: Tulis teks eksposisi (Deadline Rabu)</li>
+        <li>Matematika: Soal halaman 78-80 (Deadline Kamis)</li>
+        <li>Fisika: Laporan Praktikum (Deadline Jumat)</li>
       </ul>
     </div>
 
-    <div class="day-box">
-      <h3>Selasa</h3>
-      <ul>
-        <li>Bahasa Inggris (07.00 - 09.15)</li>
-        <li>Penjaskes (09.15 - 12.00)</li>
-        <li>Matematika (12.30 - 14.00)</li>
-        <li>Bahasa Arab (14.00 - 15.30)</li>
-      </ul>
+    <div class="content" id="biodata">
+      <h2>Biodata</h2>
+      <p><b>Nama:</b> Muh. Ishaq Romadhan</p>
+      <p><b>Kelas:</b> XII IPS 2</p>
+      <p><b>Tanggal Lahir:</b> 10 Januari 2007</p>
+      <p><b>Jadwal Piket:</b> Rabu dan Jumat</p>
+      <button class="logout-btn" onclick="logout()">Log Out</button>
     </div>
-
-    <div class="day-box">
-      <h3>Rabu</h3>
-      <ul>
-        <li>PKn (07.00 - 08.30)</li>
-        <li>Matematika (08.30 - 10.00)</li>
-        <li>Qur’an Hadist (10.30 - 12.00)</li>
-        <li>Kimia (12.30 - 14.00)</li>
-        <li>Biologi (14.00 - 15.30)</li>
-      </ul>
-    </div>
-
-    <div class="day-box">
-      <h3>Kamis</h3>
-      <ul>
-        <li>Informatika (07.00 - 08.30)</li>
-        <li>Fisika (08.30 - 10.00)</li>
-        <li>Mulok (10.30 - 12.00)</li>
-        <li>Fiqh (12.30 - 14.00)</li>
-        <li>Ekonomi (14.00 - 15.30)</li>
-      </ul>
-    </div>
-
-    <div class="day-box">
-      <h3>Jum’at</h3>
-      <ul>
-        <li>Bahasa Arab (07.30 - 08.50)</li>
-        <li>Seni Budaya (08.50 - 10.10)</li>
-        <li>Akidah Akhlak (10.30 - 12.00)</li>
-        <li>Sejarah (13.00 - 14.30)</li>
-        <li>Geografi (14.30 - 16.00)</li>
-      </ul>
-    </div>
-  </div>
-
-  <!-- Halaman Jadwal Piket -->
-  <div class="content" id="piket">
-    <h2>Jadwal Piket</h2>
-    <p>Senin: Aisyah & Putra</p>
-    <p>Selasa: Ridho & Dinda</p>
-    <p>Rabu: Ishaq & Rara</p>
-    <p>Kamis: Fajar & Salsa</p>
-    <p>Jum’at: Bagas & Nia</p>
-  </div>
-
-  <!-- Halaman Tugas -->
-  <div class="content" id="tugas">
-    <h2>Tugas Mingguan</h2>
-    <ul>
-      <li>Bahasa Indonesia: Tulis teks eksposisi (Deadline Rabu)</li>
-      <li>Matematika: Soal halaman 78-80 (Deadline Kamis)</li>
-      <li>Fisika: Laporan Praktikum (Deadline Jumat)</li>
-    </ul>
-  </div>
-
-  <!-- Halaman Biodata -->
-  <div class="content" id="biodata">
-    <h2>Biodata</h2>
-    <p><b>Nama:</b> Muh. Ishaq Romadhan</p>
-    <p><b>Kelas:</b> XII IPS 2</p>
-    <p><b>Tanggal Lahir:</b> 10 Januari 2007</p>
-    <p><b>Jadwal Piket:</b> Rabu dan Jumat</p>
-
-    <button class="logout-btn" onclick="logout()">Log Out</button>
   </div>
 
   <script>
+    // === LOGIN FUNCTION ===
+    function login() {
+      const username = document.getElementById("username").value.trim();
+      const password = document.getElementById("password").value.trim();
+      const notif = document.getElementById("notif");
+
+      if (username === "admin" && password === "1234") {
+        notif.style.display = "block";
+        setTimeout(() => {
+          document.getElementById("loginPage").style.display = "none";
+          document.getElementById("mainPage").style.display = "block";
+        }, 1000);
+      } else {
+        alert("Nama pengguna atau kata sandi salah!");
+      }
+    }
+
+    // === MENU TOGGLE ===
     const menu = document.getElementById('menu');
     const menuToggle = document.getElementById('menuToggle');
     const profileBtn = document.getElementById('profileBtn');
@@ -238,7 +321,11 @@
 
     function logout() {
       alert('Berhasil logout!');
-      showPage('roster');
+      document.getElementById("mainPage").style.display = "none";
+      document.getElementById("loginPage").style.display = "flex";
+      document.getElementById("username").value = "";
+      document.getElementById("password").value = "";
+      document.getElementById("notif").style.display = "none";
     }
   </script>
 </body>
