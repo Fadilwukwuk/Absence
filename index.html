@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>mirxlogy.id - Login</title>
+  <title>mirxlogy.id</title>
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
@@ -13,61 +13,6 @@
       padding: 0;
     }
 
-    /* ==== LOGIN PAGE ==== */
-    .login-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      text-align: center;
-    }
-    .login-box {
-      background-color: #1c1c1c;
-      padding: 30px 40px;
-      border-radius: 12px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.6);
-      width: 320px;
-    }
-    .login-box h1 {
-      margin-bottom: 25px;
-      font-size: 22px;
-      color: #fff;
-    }
-    .login-box input {
-      width: 100%;
-      padding: 10px;
-      margin: 10px 0;
-      border: none;
-      border-radius: 6px;
-      background-color: #2c2c2c;
-      color: white;
-      font-size: 15px;
-    }
-    .login-box button {
-      width: 100%;
-      padding: 10px;
-      border: none;
-      border-radius: 6px;
-      background-color: #fff;
-      color: #111;
-      font-size: 16px;
-      cursor: pointer;
-      margin-top: 10px;
-      transition: 0.3s;
-      font-weight: bold;
-    }
-    .login-box button:hover {
-      background-color: #ccc;
-    }
-    .notif {
-      display: none;
-      margin-top: 10px;
-      color: #4CAF50;
-      font-weight: bold;
-    }
-
-    /* ==== MAIN PAGE ==== */
     header {
       background-color: #1c1c1c;
       color: white;
@@ -96,12 +41,6 @@
       height: 3px;
       background-color: #ccc;
       border-radius: 3px;
-    }
-    .profile {
-      width: 35px;
-      height: 35px;
-      border-radius: 50%;
-      cursor: pointer;
     }
     .menu {
       position: absolute;
@@ -142,6 +81,13 @@
       margin-bottom: 15px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.4);
     }
+    .day-box h3 {
+      margin-top: 0;
+      color: #fff;
+    }
+    ul {
+      padding-left: 20px;
+    }
     .logout-btn {
       background-color: #d33;
       color: white;
@@ -154,28 +100,6 @@
     .logout-btn:hover {
       background-color: #b22;
     }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 15px;
-      background-color: #1c1c1c;
-      border-radius: 10px;
-      overflow: hidden;
-    }
-    th, td {
-      border: 1px solid #444;
-      padding: 10px;
-      text-align: left;
-      vertical-align: top;
-    }
-    th {
-      background-color: #333;
-    }
-    tr:nth-child(even) {
-      background-color: #222;
-    }
-
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(10px); }
       to { opacity: 1; transform: translateY(0); }
@@ -184,26 +108,14 @@
 </head>
 <body>
 
-  <!-- === LOGIN PAGE === -->
-  <div class="login-container" id="loginPage">
-    <div class="login-box">
-      <h1>Login ke mirxlogy.id</h1>
-      <input type="text" id="username" placeholder="Nama Pengguna">
-      <input type="password" id="password" placeholder="Kata Sandi">
-      <button onclick="login()">Login</button>
-      <div class="notif" id="notif">Login Berhasil!</div>
-    </div>
-  </div>
-
   <!-- === MAIN PAGE === -->
-  <div id="mainPage" style="display: none;">
+  <div id="mainPage">
     <header>
       <h1>mirxlogy.id</h1>
       <div style="display: flex; align-items: center; gap: 15px;">
         <div class="menu-icon" id="menuToggle">
           <div></div><div></div><div></div>
         </div>
-        <img src="profile.png" alt="Profile" class="profile" id="profileBtn">
       </div>
 
       <div class="menu" id="menu">
@@ -225,6 +137,45 @@
           <li>Bahasa Indonesia (13.50 - 15.50)</li>
         </ul>
       </div>
+      <div class="day-box">
+        <h3>Selasa</h3>
+        <ul>
+          <li>Bahasa Inggris (07.00 - 09.15)</li>
+          <li>Penjaskes (09.15 - 12.00)</li>
+          <li>Matematika (12.30 - 14.00)</li>
+          <li>Bahasa Arab (14.00 - 15.30)</li>
+        </ul>
+      </div>
+      <div class="day-box">
+        <h3>Rabu</h3>
+        <ul>
+          <li>PKn (07.00 - 08.30)</li>
+          <li>Matematika (08.30 - 10.00)</li>
+          <li>Qur’an Hadist (10.30 - 12.00)</li>
+          <li>Kimia (12.30 - 14.00)</li>
+          <li>Biologi (14.00 - 15.30)</li>
+        </ul>
+      </div>
+      <div class="day-box">
+        <h3>Kamis</h3>
+        <ul>
+          <li>Informatika (07.00 - 08.30)</li>
+          <li>Fisika (08.30 - 10.00)</li>
+          <li>Mulok (10.30 - 12.00)</li>
+          <li>Fiqh (12.30 - 14.00)</li>
+          <li>Ekonomi (14.00 - 15.30)</li>
+        </ul>
+      </div>
+      <div class="day-box">
+        <h3>Jum’at</h3>
+        <ul>
+          <li>Bahasa Arab (07.30 - 08.50)</li>
+          <li>Seni Budaya (08.50 - 10.10)</li>
+          <li>Akidah Akhlak (10.30 - 12.00)</li>
+          <li>Sejarah (13.00 - 14.30)</li>
+          <li>Geografi (14.30 - 16.00)</li>
+        </ul>
+      </div>
     </div>
 
     <div class="content" id="piket">
@@ -232,41 +183,13 @@
       <p>Lihat daftar lengkap seperti versi sebelumnya...</p>
     </div>
 
-    <!-- === TUGAS DALAM TABEL === -->
     <div class="content" id="tugas">
-      <h2>Tugas [Akidah Akhlak]</h2>
-      <table>
-        <tr>
-          <th>No</th>
-          <th>Judul Tugas</th>
-          <th>Deskripsi</th>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>Membuat Puisi</td>
-          <td>Buatlah puisi tentang berbakti kepada orang tua dan guru.<br>Puisi berisi pengorbanan dan rasa syukur kepada mereka.<br><b>Beri Barcode.</b></td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>Membuat Cerita Pendek</td>
-          <td>Buatlah cerita tentang anak yang berbakti kepada orang tua dan guru.<br>Tambahkan ayat/hadis tentang orang tua.<br>Anak durhaka yang tobat.<br><b>Beri Barcode.</b></td>
-        </tr>
-        <tr>
-          <td>3</td>
-          <td>Membuat Poster</td>
-          <td>Buat poster tentang pentingnya berbakti kepada orang tua dan guru.<br>Berisi ayat atau hadis dan gambar pendukung.<br><b>Beri Barcode.</b></td>
-        </tr>
-        <tr>
-          <td>4</td>
-          <td>Berbakti dalam Aksi</td>
-          <td>Lakukan aksi nyata membantu orang tua atau guru.<br>Buat laporan dan lampirkan foto/video.<br>Setiap anggota buat laporan masing-masing.<br><b>Beri Barcode.</b></td>
-        </tr>
-        <tr>
-          <td>5</td>
-          <td>Membuat Video</td>
-          <td>Buat video tentang anak yang berbakti kepada orang tua dan guru.<br><b>Beri Barcode.</b></td>
-        </tr>
-      </table>
+      <h2>Tugas Mingguan</h2>
+      <ul>
+        <li>Bahasa Indonesia: Tulis teks eksposisi (Deadline Rabu)</li>
+        <li>Matematika: Soal halaman 78-80 (Deadline Kamis)</li>
+        <li>Fisika: Laporan Praktikum (Deadline Jumat)</li>
+      </ul>
     </div>
 
     <div class="content" id="piketTerajin">
@@ -280,53 +203,11 @@
         <p style="text-align:center;"><i>Dipilih sebagai siswa paling rajin dalam piket minggu ini.</i></p>
       </div>
     </div>
-
-    <div class="content" id="biodata">
-      <h2>Biodata</h2>
-      <p><b>Nama:</b> <span id="bioNama"></span></p>
-      <p><b>Kelas:</b> <span id="bioKelas"></span></p>
-      <p><b>Tanggal Lahir:</b> <span id="bioTanggal"></span></p>
-      <p><b>Jadwal Piket:</b> <span id="bioPiket"></span></p>
-      <button class="logout-btn" onclick="logout()">Log Out</button>
-    </div>
   </div>
 
   <script>
-    const akunList = {
-      "israq": {
-        password: "1234",
-        nama: "Muh. Ishaq Romadhan",
-        kelas: "X.C",
-        tanggal: "06 September 2010",
-        piket: "Rabu dan Jumat"
-      }
-    };
-
-    function login() {
-      const username = document.getElementById("username").value.trim().toLowerCase();
-      const password = document.getElementById("password").value.trim();
-      const notif = document.getElementById("notif");
-
-      const akun = akunList[username];
-
-      if (akun && akun.password === password) {
-        notif.style.display = "block";
-        setTimeout(() => {
-          document.getElementById("loginPage").style.display = "none";
-          document.getElementById("mainPage").style.display = "block";
-          document.getElementById("bioNama").textContent = akun.nama;
-          document.getElementById("bioKelas").textContent = akun.kelas;
-          document.getElementById("bioTanggal").textContent = akun.tanggal;
-          document.getElementById("bioPiket").textContent = akun.piket;
-        }, 1000);
-      } else {
-        alert("Nama pengguna atau kata sandi salah!");
-      }
-    }
-
     const menu = document.getElementById('menu');
     const menuToggle = document.getElementById('menuToggle');
-    const profileBtn = document.getElementById('profileBtn');
 
     menuToggle.onclick = () => {
       menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
@@ -337,19 +218,7 @@
       document.getElementById(id).classList.add('active');
       menu.style.display = 'none';
     }
-
-    profileBtn.onclick = () => {
-      showPage('biodata');
-    };
-
-    function logout() {
-      alert('Berhasil logout!');
-      document.getElementById("mainPage").style.display = "none";
-      document.getElementById("loginPage").style.display = "flex";
-      document.getElementById("username").value = "";
-      document.getElementById("password").value = "";
-      document.getElementById("notif").style.display = "none";
-    }
   </script>
+
 </body>
 </html>
