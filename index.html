@@ -3,285 +3,205 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>mirxlogy.id</title>
+  <title>mirxlogy.id - Login</title>
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
+      background-color: #111;
+      color: #eee;
       margin: 0;
       padding: 0;
-      background-color: #f4f4f4;
-      color: #333;
     }
 
-    /* === LOGIN PAGE === */
-    #login-page {
-      background-color: #fff;
-      color: #000;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
+    /* ==== LOGIN PAGE ==== */
     .login-container {
-      background: #000;
-      color: #fff;
-      padding: 40px 30px;
-      border-radius: 10px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.3);
-      width: 320px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
       text-align: center;
     }
-
-    .login-container h1 {
-      margin-bottom: 20px;
+    .login-box {
+      background-color: #1c1c1c;
+      padding: 30px 40px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.6);
+      width: 320px;
+    }
+    .login-box h1 {
+      margin-bottom: 25px;
+      font-size: 22px;
       color: #fff;
     }
-
-    .login-container input {
+    .login-box input {
       width: 100%;
       padding: 10px;
-      margin: 8px 0;
+      margin: 10px 0;
+      border: none;
       border-radius: 6px;
-      border: 1px solid #ccc;
+      background-color: #2c2c2c;
+      color: white;
       font-size: 15px;
     }
-
-    .login-container button {
+    .login-box button {
       width: 100%;
-      background-color: #fff;
-      color: #000;
-      border: none;
       padding: 10px;
+      border: none;
       border-radius: 6px;
+      background-color: #fff;
+      color: #111;
+      font-size: 16px;
       cursor: pointer;
-      font-weight: bold;
+      margin-top: 10px;
       transition: 0.3s;
+      font-weight: bold;
     }
-
-    .login-container button:hover {
-      background-color: #ddd;
+    .login-box button:hover {
+      background-color: #ccc;
     }
-
-    #notif {
+    .notif {
       display: none;
       margin-top: 10px;
-      background: #4CAF50;
-      color: white;
-      padding: 10px;
-      border-radius: 6px;
+      color: #4CAF50;
+      font-weight: bold;
     }
 
-    /* === MAIN PAGE === */
-    #main-page {
-      display: none;
-      background-color: #1e1e1e;
+    /* ==== MAIN PAGE ==== */
+    header {
+      background-color: #1c1c1c;
       color: white;
-      min-height: 100vh;
-    }
-
-    .navbar {
-      background: #111;
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 10px 20px;
-      color: white;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-      z-index: 1000;
+      position: relative;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.5);
     }
-
-    .logo {
+    header h1 {
+      margin: 0;
+      font-size: 20px;
+      font-weight: bold;
+    }
+    .menu-icon {
+      width: 25px;
+      height: 20px;
+      cursor: pointer;
       display: flex;
-      align-items: center;
-      gap: 10px;
+      flex-direction: column;
+      justify-content: space-between;
     }
-
-    .logo img {
+    .menu-icon div {
+      width: 100%;
+      height: 3px;
+      background-color: #ccc;
+      border-radius: 3px;
+    }
+    .profile {
       width: 35px;
       height: 35px;
       border-radius: 50%;
       cursor: pointer;
-      border: 2px solid white;
     }
-
-    .menu-icon {
-      font-size: 24px;
-      cursor: pointer;
-      user-select: none;
-    }
-
-    .dropdown {
-      display: none;
+    .menu {
       position: absolute;
       top: 60px;
       right: 20px;
-      background: #222;
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.4);
-    }
-
-    .dropdown a {
-      display: block;
-      color: white;
-      padding: 10px 20px;
-      text-decoration: none;
-      transition: 0.3s;
-    }
-
-    .dropdown a:hover {
-      background: #333;
-    }
-
-    .main-content img {
-      width: 100%;
-      height: 100vh;
-      object-fit: cover;
-    }
-
-    /* === PROFILE PAGE === */
-    #profile-page {
+      background-color: #222;
+      border: 1px solid #444;
+      border-radius: 10px;
       display: none;
-      background: #1a1a1a;
-      color: white;
-      min-height: 100vh;
-      padding-top: 100px;
-      text-align: center;
+      flex-direction: column;
+      width: 150px;
+      z-index: 10;
     }
-
-    .profile-container {
-      background: #2a2a2a;
-      padding: 30px;
-      margin: 0 auto;
-      width: 300px;
-      border-radius: 12px;
-      box-shadow: 0 0 15px rgba(255,255,255,0.1);
-    }
-
-    .profile-container h2 {
-      margin-bottom: 20px;
-    }
-
-    .profile-container p {
+    .menu button {
+      background: none;
+      border: none;
+      color: #eee;
       text-align: left;
-      margin: 10px 0;
+      padding: 10px 15px;
+      cursor: pointer;
+      width: 100%;
     }
-
+    .menu button:hover {
+      background-color: #333;
+    }
+    .content {
+      padding: 20px;
+      display: none;
+      animation: fadeIn 0.4s ease;
+    }
+    .active {
+      display: block;
+    }
+    .day-box {
+      background-color: #1f1f1f;
+      border-radius: 10px;
+      padding: 15px;
+      margin-bottom: 15px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+    }
+    .day-box h3 {
+      margin-top: 0;
+      color: #fff;
+    }
+    ul {
+      padding-left: 20px;
+    }
     .logout-btn {
-      background: #c0392b;
+      background-color: #d33;
       color: white;
       border: none;
-      padding: 8px 16px;
+      padding: 10px 15px;
       border-radius: 8px;
       cursor: pointer;
       margin-top: 20px;
-      float: left;
     }
-
     .logout-btn:hover {
-      background: #a93226;
+      background-color: #b22;
     }
-
-    /* === ROSTER PAGE === */
-    #roster-page {
-      display: none;
-      background: #1a1a1a;
-      color: white;
-      min-height: 100vh;
-      padding: 100px 20px;
-    }
-
-    .roster-container {
-      max-width: 600px;
-      margin: 0 auto;
-      background: #2a2a2a;
-      border-radius: 10px;
-      padding: 20px;
-    }
-
-    .roster-container h2 {
-      text-align: center;
-      margin-bottom: 20px;
-      color: #fff;
-    }
-
-    .day {
-      margin-bottom: 20px;
-    }
-
-    .day h3 {
-      color: #ddd;
-    }
-
-    .day ul {
-      list-style: none;
-      padding-left: 10px;
-    }
-
-    .day li {
-      background: #333;
-      margin: 5px 0;
-      padding: 8px;
-      border-radius: 6px;
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 <body>
 
-  <!-- LOGIN PAGE -->
-  <div id="login-page">
-    <div class="login-container">
-      <h1>Login</h1>
-      <input type="text" id="username" placeholder="Nama Pengguna" required>
-      <input type="password" id="password" placeholder="Kata Sandi" required>
-      <button onclick="login()">Masuk</button>
-      <div id="notif">Login berhasil!</div>
+  <!-- === LOGIN PAGE === -->
+  <div class="login-container" id="loginPage">
+    <div class="login-box">
+      <h1>Login ke mirxlogy.id</h1>
+      <input type="text" id="username" placeholder="Nama Pengguna">
+      <input type="password" id="password" placeholder="Kata Sandi">
+      <button onclick="login()">Login</button>
+      <div class="notif" id="notif">Login Berhasil!</div>
     </div>
   </div>
 
-  <!-- MAIN PAGE -->
-  <div id="main-page">
-    <div class="navbar">
-      <div class="logo">
-        <img src="profile.jpg" alt="Profile" onclick="openProfile()">
-        <span>mirxlogy.id</span>
-      </div>
-      <div class="menu">
-        <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
-        <div class="dropdown" id="dropdown-menu">
-          <a href="#" onclick="openRoster()">Roster</a>
-          <a href="#">Tugas</a>
-          <a href="#">Jadwal Piket</a>
+  <!-- === MAIN PAGE === -->
+  <div id="mainPage" style="display: none;">
+    <header>
+      <h1>mirxlogy.id</h1>
+      <div style="display: flex; align-items: center; gap: 15px;">
+        <div class="menu-icon" id="menuToggle">
+          <div></div><div></div><div></div>
         </div>
+        <img src="profile.png" alt="Profile" class="profile" id="profileBtn">
       </div>
-    </div>
-    <div class="main-content">
-      <img src="gambar1.jpg" alt="Wallpaper">
-    </div>
-  </div>
 
-  <!-- PROFILE PAGE -->
-  <div id="profile-page">
-    <div class="profile-container">
-      <h2>Biodata</h2>
-      <p><strong>Nama:</strong> <span id="bio-nama"></span></p>
-      <p><strong>Kelas:</strong> <span id="bio-kelas"></span></p>
-      <p><strong>Tanggal Lahir:</strong> <span id="bio-lahir"></span></p>
-      <button class="logout-btn" onclick="logout()">Logout</button>
-    </div>
-  </div>
+      <div class="menu" id="menu">
+        <button onclick="showPage('roster')">Roster</button>
+        <button onclick="showPage('piket')">Jadwal Piket</button>
+        <button onclick="showPage('tugas')">Tugas</button>
+      </div>
+    </header>
 
-  <!-- ROSTER PAGE -->
-  <div id="roster-page">
-    <div class="roster-container">
+    <div class="content active" id="roster">
       <h2>Jadwal Pelajaran</h2>
 
-      <div class="day">
+      <div class="day-box">
         <h3>Senin</h3>
         <ul>
           <li>Penguatan Bahasa (07.45 - 10.00)</li>
@@ -291,7 +211,7 @@
         </ul>
       </div>
 
-      <div class="day">
+      <div class="day-box">
         <h3>Selasa</h3>
         <ul>
           <li>Bahasa Inggris (07.00 - 09.15)</li>
@@ -301,7 +221,7 @@
         </ul>
       </div>
 
-      <div class="day">
+      <div class="day-box">
         <h3>Rabu</h3>
         <ul>
           <li>PKn (07.00 - 08.30)</li>
@@ -312,7 +232,7 @@
         </ul>
       </div>
 
-      <div class="day">
+      <div class="day-box">
         <h3>Kamis</h3>
         <ul>
           <li>Informatika (07.00 - 08.30)</li>
@@ -323,7 +243,7 @@
         </ul>
       </div>
 
-      <div class="day">
+      <div class="day-box">
         <h3>Jum’at</h3>
         <ul>
           <li>Bahasa Arab (07.30 - 08.50)</li>
@@ -334,65 +254,97 @@
         </ul>
       </div>
     </div>
+
+    <div class="content" id="piket">
+      <h2>Jadwal Piket</h2>
+      <p>Senin: Aisyah & Putra</p>
+      <p>Selasa: Ridho & Dinda</p>
+      <p>Rabu: Ishaq & Rara</p>
+      <p>Kamis: Fajar & Salsa</p>
+      <p>Jum’at: Bagas & Nia</p>
+    </div>
+
+    <div class="content" id="tugas">
+      <h2>Tugas Mingguan</h2>
+      <ul>
+        <li>Bahasa Indonesia: Tulis teks eksposisi (Deadline Rabu)</li>
+        <li>Matematika: Soal halaman 78-80 (Deadline Kamis)</li>
+        <li>Fisika: Laporan Praktikum (Deadline Jumat)</li>
+      </ul>
+    </div>
+
+    <div class="content" id="biodata">
+      <h2>Biodata</h2>
+      <p><b>Nama:</b> <span id="bioNama"></span></p>
+      <p><b>Kelas:</b> <span id="bioKelas"></span></p>
+      <p><b>Tanggal Lahir:</b> <span id="bioTanggal"></span></p>
+      <p><b>Jadwal Piket:</b> <span id="bioPiket"></span></p>
+      <button class="logout-btn" onclick="logout()">Log Out</button>
+    </div>
   </div>
 
   <script>
-    const loginPage = document.getElementById('login-page');
-    const mainPage = document.getElementById('main-page');
-    const profilePage = document.getElementById('profile-page');
-    const rosterPage = document.getElementById('roster-page');
-
-    const dropdown = document.getElementById('dropdown-menu');
-    const notif = document.getElementById('notif');
-
-    function toggleMenu() {
-      dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
-    }
+    const akunList = {
+      "israq": { // username
+        password: "1234",
+        nama: "Muh. Ishaq Romadhan",
+        kelas: "X.C",
+        tanggal: "06 September 2010",
+        piket: "Rabu dan Jumat"
+      }
+    };
 
     function login() {
-      const username = document.getElementById('username').value.trim();
-      const password = document.getElementById('password').value.trim();
+      const username = document.getElementById("username").value.trim().toLowerCase();
+      const password = document.getElementById("password").value.trim();
+      const notif = document.getElementById("notif");
 
-      if (username === "Ishaq" && password === "1234") {
+      const akun = akunList[username];
+
+      if (akun && akun.password === password) {
         notif.style.display = "block";
         setTimeout(() => {
-          notif.style.display = "none";
-          loginPage.style.display = "none";
-          mainPage.style.display = "block";
-          localStorage.setItem("user", "is");
+          document.getElementById("loginPage").style.display = "none";
+          document.getElementById("mainPage").style.display = "block";
+
+          // tampilkan biodata sesuai akun
+          document.getElementById("bioNama").textContent = akun.nama;
+          document.getElementById("bioKelas").textContent = akun.kelas;
+          document.getElementById("bioTanggal").textContent = akun.tanggal;
+          document.getElementById("bioPiket").textContent = akun.piket;
         }, 1000);
       } else {
         alert("Nama pengguna atau kata sandi salah!");
       }
     }
 
-    function openProfile() {
-      mainPage.style.display = "none";
-      rosterPage.style.display = "none";
-      profilePage.style.display = "block";
+    // === MENU TOGGLE ===
+    const menu = document.getElementById('menu');
+    const menuToggle = document.getElementById('menuToggle');
+    const profileBtn = document.getElementById('profileBtn');
 
-      document.getElementById("bio-nama").innerText = "Muh. Ishaq Romadhan";
-      document.getElementById("bio-kelas").innerText = "X.C";
-      document.getElementById("bio-lahir").innerText = "06 September 2010";
+    menuToggle.onclick = () => {
+      menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+    };
+
+    function showPage(id) {
+      document.querySelectorAll('.content').forEach(c => c.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      menu.style.display = 'none';
     }
 
-    function openRoster() {
-      profilePage.style.display = "none";
-      mainPage.style.display = "none";
-      rosterPage.style.display = "block";
-      dropdown.style.display = "none";
-    }
+    profileBtn.onclick = () => {
+      showPage('biodata');
+    };
 
     function logout() {
-      localStorage.removeItem("user");
-      profilePage.style.display = "none";
-      rosterPage.style.display = "none";
-      mainPage.style.display = "none";
-      loginPage.style.display = "flex";
-      document.getElementById('username').value = "";
-      document.getElementById('password').value = "";
+      alert('Berhasil logout!');
+      document.getElementById("mainPage").style.display = "none";
+      document.getElementById("loginPage").style.display = "flex";
+      document.getElementById("username").value = "";
+      document.getElementById("password").value = "";
+      document.getElementById("notif").style.display = "none";
     }
   </script>
-
 </body>
 </html>
