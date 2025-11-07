@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>mirxlogy.id</title>
+  <title>Eloquencia (بلاغة)</title>
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
@@ -109,116 +109,162 @@
 <body>
 
   <!-- === MAIN PAGE === -->
-  <div id="mainPage">
-    <header>
-      <h1>mirxlogy.id</h1>
-      <div style="display: flex; align-items: center; gap: 15px;">
-        <div class="menu-icon" id="menuToggle">
-          <div></div><div></div><div></div>
-        </div>
-      </div>
+  <div class="content active" id="roster">
+  <h2>Jadwal Pelajaran</h2>
+  <div class="day-box">
+    <h3>Senin</h3>
+    <ul>
+      <li>Penguatan Bahasa (07.45 - 10.00)</li>
+      <li>Sosiologi (10.30 - 12.00)</li>
+      <li>Sejarah Kebudayaan Islam (12.30 - 13.50)</li>
+      <li>Bahasa Indonesia (13.50 - 15.50)</li>
+    </ul>
+  </div>
+  <div class="day-box">
+    <h3>Selasa</h3>
+    <ul>
+      <li>Bahasa Inggris (07.00 - 09.15)</li>
+      <li>Penjaskes (09.15 - 12.00)</li>
+      <li>Matematika (12.30 - 14.00)</li>
+      <li>Bahasa Arab (14.00 - 15.30)</li>
+    </ul>
+  </div>
+  <div class="day-box">
+    <h3>Rabu</h3>
+    <ul>
+      <li>PKn (07.00 - 08.30)</li>
+      <li>Matematika (08.30 - 10.00)</li>
+      <li>Qur’an Hadist (10.30 - 12.00)</li>
+      <li>Kimia (12.30 - 14.00)</li>
+      <li>Biologi (14.00 - 15.30)</li>
+    </ul>
+  </div>
+  <div class="day-box">
+    <h3>Kamis</h3>
+    <ul>
+      <li>Informatika (07.00 - 08.30)</li>
+      <li>Fisika (08.30 - 10.00)</li>
+      <li>Mulok (10.30 - 12.00)</li>
+      <li>Fiqh (12.30 - 14.00)</li>
+      <li>Ekonomi (14.00 - 15.30)</li>
+    </ul>
+  </div>
+  <div class="day-box">
+    <h3>Jum’at</h3>
+    <ul>
+      <li>Bahasa Arab (07.30 - 08.50)</li>
+      <li>Seni Budaya (08.50 - 10.10)</li>
+      <li>Akidah Akhlak (10.30 - 12.00)</li>
+      <li>Sejarah (13.00 - 14.30)</li>
+      <li>Geografi (14.30 - 16.00)</li>
+    </ul>
+  </div>
+</div>
 
-      <div class="menu" id="menu">
-        <button onclick="showPage('roster')">Roster</button>
-        <button onclick="showPage('piket')">Jadwal Piket</button>
-        <button onclick="showPage('tugas')">Tugas</button>
-        <button onclick="showPage('piketTerajin')">Piket Terajin</button>
-      </div>
-    </header>
+<div class="content" id="piket">
+  <h2>Jadwal Piket Mingguan</h2>
 
-    <div class="content active" id="roster">
-      <h2>Jadwal Pelajaran</h2>
-      <div class="day-box">
-        <h3>Senin</h3>
-        <ul>
-          <li>Penguatan Bahasa (07.45 - 10.00)</li>
-          <li>Sosiologi (10.30 - 12.00)</li>
-          <li>Sejarah Kebudayaan Islam (12.30 - 13.50)</li>
-          <li>Bahasa Indonesia (13.50 - 15.50)</li>
-        </ul>
-      </div>
-      <div class="day-box">
-        <h3>Selasa</h3>
-        <ul>
-          <li>Bahasa Inggris (07.00 - 09.15)</li>
-          <li>Penjaskes (09.15 - 12.00)</li>
-          <li>Matematika (12.30 - 14.00)</li>
-          <li>Bahasa Arab (14.00 - 15.30)</li>
-        </ul>
-      </div>
-      <div class="day-box">
-        <h3>Rabu</h3>
-        <ul>
-          <li>PKn (07.00 - 08.30)</li>
-          <li>Matematika (08.30 - 10.00)</li>
-          <li>Qur’an Hadist (10.30 - 12.00)</li>
-          <li>Kimia (12.30 - 14.00)</li>
-          <li>Biologi (14.00 - 15.30)</li>
-        </ul>
-      </div>
-      <div class="day-box">
-        <h3>Kamis</h3>
-        <ul>
-          <li>Informatika (07.00 - 08.30)</li>
-          <li>Fisika (08.30 - 10.00)</li>
-          <li>Mulok (10.30 - 12.00)</li>
-          <li>Fiqh (12.30 - 14.00)</li>
-          <li>Ekonomi (14.00 - 15.30)</li>
-        </ul>
-      </div>
-      <div class="day-box">
-        <h3>Jum’at</h3>
-        <ul>
-          <li>Bahasa Arab (07.30 - 08.50)</li>
-          <li>Seni Budaya (08.50 - 10.10)</li>
-          <li>Akidah Akhlak (10.30 - 12.00)</li>
-          <li>Sejarah (13.00 - 14.30)</li>
-          <li>Geografi (14.30 - 16.00)</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="content" id="piket">
-      <h2>Jadwal Piket Mingguan</h2>
-      <p>Lihat daftar lengkap seperti versi sebelumnya...</p>
-    </div>
-
-    <div class="content" id="tugas">
-      <h2>Tugas Mingguan</h2>
-      <ul>
-        <li>Bahasa Indonesia: Tulis teks eksposisi (Deadline Rabu)</li>
-        <li>Matematika: Soal halaman 78-80 (Deadline Kamis)</li>
-        <li>Fisika: Laporan Praktikum (Deadline Jumat)</li>
-      </ul>
-    </div>
-
-    <div class="content" id="piketTerajin">
-      <h2>Piket Terajin</h2>
-      <div class="day-box">
-        <img src="profile.png" alt="Foto" style="width:100px;height:100px;border-radius:50%;display:block;margin:auto;">
-        <h3 style="text-align:center;margin-top:10px;">Muh. Ishaq Romadhan</h3>
-        <p style="text-align:center;"><b>Kelas:</b> X.C</p>
-        <p style="text-align:center;"><b>Tanggal Lahir:</b> 06 September 2010</p>
-        <p style="text-align:center;"><b>Jadwal Piket:</b> Rabu dan Jumat</p>
-        <p style="text-align:center;"><i>Dipilih sebagai siswa paling rajin dalam piket minggu ini.</i></p>
-      </div>
-    </div>
+  <div class="day-box">
+    <h3>Senin</h3>
+    <ul>
+      <li>Haura Khansa Putri Satriady</li>
+      <li>Achmad Dzaka Buhairil Ma'Arif</li>
+      <li>Adam Athar Gobel</li>
+      <li>Aleeza Fatin Rifaya</li>
+      <li>Amal Khalifah Ilahi</li>
+      <li>Andhika Aushaf Aryasatya</li>
+      <li>Keeva Elmira Kuswandi</li>
+    </ul>
   </div>
 
-  <script>
-    const menu = document.getElementById('menu');
-    const menuToggle = document.getElementById('menuToggle');
+  <div class="day-box">
+    <h3>Selasa</h3>
+    <ul>
+      <li>Andi Dira Mahirah J.</li>
+      <li>Andi Eryna Fairuz Indrawan</li>
+      <li>Andi Fadhil Ramadhan</li>
+      <li>Ayrin Neyla Rifani</li>
+      <li>Bazlah Izzah Azimah</li>
+      <li>Dhafina Anindita Fadhli</li>
+      <li>Zchrysilla Kasih Jagadditha</li>
+    </ul>
+  </div>
 
-    menuToggle.onclick = () => {
-      menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
-    };
+  <div class="day-box">
+    <h3>Rabu</h3>
+    <ul>
+      <li>Gilang Syauki Ramadhan</li>
+      <li>Humayra Parma</li>
+      <li>Inayah Putri Ridwan</li>
+      <li>Setyaningsih Widyastuti Surahman</li>
+      <li>Muh. Ishaq Romadhan</li>
+      <li>Muhammad Arrizky Assyarif</li>
+      <li>Syarifah Adilah Putri R.</li>
+      <li>Zakyna Ghinayah</li>
+    </ul>
+  </div>
 
-    function showPage(id) {
-      document.querySelectorAll('.content').forEach(c => c.classList.remove('active'));
-      document.getElementById(id).classList.add('active');
-      menu.style.display = 'none';
-    }
-  </script>
+  <div class="day-box">
+    <h3>Kamis</h3>
+    <ul>
+      <li>Muhammad Naufal Hakim</li>
+      <li>Muhammad Rizky Fitrawan</li>
+      <li>Muthaharrah</li>
+      <li>Nahdah Ardhani Putri</li>
+      <li>Karina Anindita Perwira</li>
+    </ul>
+  </div>
+
+  <div class="day-box">
+    <h3>Jum’at</h3>
+    <ul>
+      <li>Najwa Khairina Salihah</li>
+      <li>Qeiz Ahmad Fayyadh Ghaisan</li>
+      <li>Sakinah Sahra Syam</li>
+      <li>Naifah Taqiyyah Assan</li>
+      <li>Tika Asih Purwanti</li>
+      <li>Farras Ayulia Roem</li>
+      <li>Andi Bilqis Riwifharzana Muallim</li>
+      <li>Muhammad Raihan Anwari</li>
+    </ul>
+  </div>
+</div>
+
+<div class="content" id="tugas">
+  <h2>Tugas Mingguan</h2>
+  <ul>
+    <li>Bahasa Indonesia: Tulis teks eksposisi (Deadline Rabu)</li>
+    <li>Matematika: Soal halaman 78-80 (Deadline Kamis)</li>
+    <li>Fisika: Laporan Praktikum (Deadline Jumat)</li>
+  </ul>
+</div>
+
+<div class="content" id="piketTerajin">
+  <h2>Piket Terajin</h2>
+  <div class="day-box">
+    <img src="profile.png" alt="Foto" style="width:100px;height:100px;border-radius:50%;display:block;margin:auto;">
+    <h3 style="text-align:center;margin-top:10px;">Muh. Ishaq Romadhan</h3>
+    <p style="text-align:center;"><b>Kelas:</b> X.C</p>
+    <p style="text-align:center;"><b>Tanggal Lahir:</b> 06 September 2010</p>
+    <p style="text-align:center;"><b>Jadwal Piket:</b> Rabu dan Jumat</p>
+    <p style="text-align:center;"><i>Dipilih sebagai siswa paling rajin dalam piket minggu ini.</i></p>
+  </div>
+</div>
+
+<script>
+  const menu = document.getElementById('menu');
+  const menuToggle = document.getElementById('menuToggle');
+
+  menuToggle.onclick = () => {
+    menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+  };
+
+  function showPage(id) {
+    document.querySelectorAll('.content').forEach(c => c.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    menu.style.display = 'none';
+  }
+    </script>
 
 </body>
 </html>
